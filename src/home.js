@@ -1,5 +1,3 @@
-// System.import('./home.css!');
-
 import {bindable} from 'aurelia-framework';
 
 import Deck from './logic/deck';
@@ -26,13 +24,13 @@ export class Home {
     this.selectedCardsHolder = new SelectedCardsHolder(this.domGateway);
     this.timerGateway = new TimerGateway();
 
-    var cards = Array(this.width * this.height).fill().map(() => this.deck.nextCard());
+    const cards = Array(this.width * this.height).fill().map(() => this.deck.nextCard());
     this.board = new Board(this.width, this.height, cards);
 
     this.rows = [];
-    for (var y = 0; y < this.height; y++) {
-      var row = [];
-      for (var x = 0; x < this.width; x++) {
+    for (let y = 0; y < this.height; y++) {
+      const row = [];
+      for (let x = 0; x < this.width; x++) {
         row.push(this.board.cardAt(x, y));
       }
       this.rows.push(row);
@@ -44,8 +42,8 @@ export class Home {
   }
 
   markHint() {
-    var availableMatches = this.matcher.availableMatches(this.board.cards);
-    var set = availableMatches[Math.random()*availableMatches.length];
+    const availableMatches = this.matcher.availableMatches(this.board.cards);
+    const set = availableMatches[ Math.random() * availableMatches.length ];
     set.forEach(cards => {
       // How do we even find these elements?!
     });
@@ -57,14 +55,14 @@ export class Home {
 
   userClickedCard($event, card) {
     if (this.canSelect) {
-      var element = this.findClickedCardElement($event);
+      const element = this.findClickedCardElement($event);
       this.toggleSelectedCard(element, card);
     }
   }
 
   findClickedCardElement($event) {
     // Icky!!!!
-    var element;
+    let element;
     if ($event.target.tagName === 'IMG') {
       element = $event.target.parentElement
     } else if ($event.target.tagName === 'CARD-VIEW') {
@@ -108,7 +106,7 @@ export class Home {
     this.canSelect = false;
     this.presentMatchFoundAlert();
 
-    var stagger = 75;
+    const stagger = 75;
 
     this.selectedCardsHolder.eachDo((i, pair) => {
         const l = i;

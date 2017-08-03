@@ -1,0 +1,16 @@
+<template>
+  <require from="./home.css"></require>
+  <require from="./card-view"></require>
+  <section class="container">
+    <section class="header">
+      <h1>The Set Game</h1>
+      <section class="alert match-found" ref="match">Match Found!</section>
+      <section class="alert not-a-match" ref="nomatch">Not a match</section>
+    </section>
+    <section class="board">
+      <section repeat.for="row of rows" class="row">
+        <card-view click.delegate="userClickedCard($event, card)" repeat.for="card of row" card.bind="card"></card-view>
+      </section>
+    </section>
+  </section>
+</template>

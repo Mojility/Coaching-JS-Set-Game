@@ -1,15 +1,14 @@
 import Board from '../../src/logic/board';
 import Deck from '../../src/logic/deck';
-import Card from '../../src/logic/card';
 
 describe("Board", () => {
 
   let deck = new Deck();
 
-  var board;
+  let board;
 
   beforeEach(() => {
-    var cards = Array(9).fill().map(() => deck.nextCard());
+    const cards = Array(9).fill().map(() => deck.nextCard());
     board = new Board(3, 3, cards);
   });
 

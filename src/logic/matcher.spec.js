@@ -3,7 +3,7 @@ import Card from '../../src/logic/card';
 
 describe("Matcher", () => {
 
-  var m;
+  let m;
 
   beforeEach(() => {
     m = new Matcher();
